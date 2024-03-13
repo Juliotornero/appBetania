@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+.imgHeader {
+    background-image: url(/src/assets/mobileHeader.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+  }
+
+  .imgHeaderDesktop {
+    background-image: url(/src/assets/desktopHeader.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+  } 
+
+  .roomDesktop {
+    background-image: url(/src/assets/pages/roomDesktop.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .serviceDesktop {
+    background-image: url(/src/assets/pages/serviceDesktop.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .piscoDesktop {
+    background-image: url(/src/assets/pages/piscoDesktop.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .faqDesktop {
+    background-image: url(/src/assets/pages/faqDesktop.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .offersDesktop {
+    background-image: url(/src/assets/pages/offersDesktop.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+
+}
+
+
+
