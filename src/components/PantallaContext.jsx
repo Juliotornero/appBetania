@@ -8,7 +8,7 @@ export const PantallaProvider = ({ children }) => {
 
   const handleResize = () => {
     const isTablet = window.innerWidth >= 768;
-    const isDesktop = window.innerWidth >= 1024;
+    const isDesktop = window.innerWidth >= 1440;
     setPantallaTablet(isTablet);
     setPantallaDesktop(isDesktop);
   };

@@ -4,12 +4,12 @@
 
 
 @layer components {
-.imgHeader {
-    background-image: url(/src/assets/mobileHeader.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: left;
-  }
+  .imgHeader {
+      background-image: url(/src/assets/mobileHeader.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: left;
+    }
 
   .imgHeaderDesktop {
     background-image: url(/src/assets/desktopHeader.jpg);
@@ -52,6 +52,7 @@
     background-size: cover;
     background-position: center;
   }
+
 
 
 }

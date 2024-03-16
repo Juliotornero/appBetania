@@ -17,6 +17,8 @@ import Legal from './pages/Legal'
 import About from './pages/About';
 import Cookies from './pages/Cookies';
 import Rules from './pages/Rules';
+import Contact from './pages/Contact';
+
 
 const router = createBrowserRouter([
   {
@@ -38,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: '/ofertas',
         element: <Offers />,
+      },
+      {
+        path: '/contacto',
+        element: <Contact />,
       },
       {
         path: '/pisco',

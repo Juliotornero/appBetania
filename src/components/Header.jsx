@@ -1,8 +1,5 @@
-import imgMenu from '../assets/menu.svg'
 import imgMenuWhite from '../assets/menuWhite.svg'
 import imgClose from '../assets/close.svg'
-import logoWhite from '../assets/logoWhite.svg'
-import logoBlack from '../assets/logoBlack.svg'
 import logoName from '../assets/logoName.svg'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
@@ -10,7 +7,7 @@ import { usePantalla } from './PantallaContext';
 
 const Header = () => {
 
-    const { pantallaTablet } = usePantalla();
+    const { pantallaTablet, pantallaDesktop } = usePantalla();
     const [scrollDown, setScrollDown] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -30,6 +27,7 @@ const Header = () => {
         };
     }, []);
 
+
     const openMenu = () => {
         setIsMenuOpen(true);
         document.body.classList.add('overflow-hidden');
@@ -43,80 +41,47 @@ const Header = () => {
     return (
 
 
-        <header className='w-full absolute top-0 left-0'>
+        <header className='w-full absolute'>
 
-            <div className={`z-30 w-full h-[70px] px-4 flex items-center ${scrollDown ? 'fixed bg-white  border border-b-2' : 'bg-transparent'} tablet:h-[90px]`}>
+            <div className={`w-full h-[70px] px-4 mx-auto  tablet:h-[90px] z-30 ${scrollDown ? 'fixed bg-[#bf7474]' : 'bg-transparent'}`}>
 
-                <div className='w-full h-full mx-auto max-w-screen-desktop flex justify-between items-center'>
+                <div className='max-w-[1440px] h-full mx-auto flex justify-between items-center'>
 
-                    {scrollDown
-                        ?
-                        <>
-                            <button onClick={openMenu} className='flex justify-center items-center text-black'>
-                                <img className='w-8 desktop:w-10' src={imgMenu} alt="menuIcon" />
-                                {pantallaTablet && <span className='ml-2 uppercase text-sm pr-14'>Menu</span>}
-                            </button>
+                    <img className='w-[120px] tablet:w-[150px] desktop:w-[200px]' src={logoName} alt="Logo Be'Tania" />
+                    {!pantallaTablet && <img onClick={openMenu} className='w-8' src={imgMenuWhite} alt="menuIcon" />}
 
-                            {pantallaTablet && <span><img className='tablet:w-[150px] desktop:w-[200px]' src={logoName} alt="Logo Be'Tania" /></span>}
 
-                            <div className='flex items-center'>
-
-                                {!pantallaTablet && <button><img className='w-12 mr-2' src={logoBlack} alt="Logo Be'Tania" /></button>}
-
-                                <Link to="https://api.whatsapp.com/send?phone=51942916064&text=%C2%A1Hola!%20Quisiera%20informaci%C3%B3n%20%F0%9F%98%8A" target="_blank" className={`w-[134px] h-[38px] flex justify-center items-center bg-[#181818] border-2  border-black text-white uppercase text-sm font-work rounded hover:bg-transparent hover:text-black 
-                                    tablet:h-[48px] tablet:w-[167px] 
-                                    desktop:w-[199px] desktop:h-[58px]`}
-                                >
-                                    Reserva
-                                </Link>
-
-                            </div>
-
-                        </>
-                        :
-                        <>
-                            <button onClick={openMenu} className='flex justify-center items-center text-white'>
-                                <img className='w-8 desktop:w-10' src={imgMenuWhite} alt="menuIcon" />
-                                {pantallaTablet && <span className='ml-2 uppercase text-sm'>Menu</span>}
-                            </button>
-
-                            <Link to="https://api.whatsapp.com/send?phone=51942916064&text=%C2%A1Hola!%20Quisiera%20informaci%C3%B3n%20%F0%9F%98%8A" target="_blank" className={`w-[134px] h-[38px] flex justify-center items-center uppercase font-work text-sm  rounded bg-white text-black hover:bg-transparent hover:text-white border-2 
-                                tablet:h-[48px] tablet:w-[167px] 
-                                desktop:w-[199px] desktop:h-[58px] 
-                                `}
-                            >
-                                Reserva
-                            </Link>
-
-                        </>
+                    {pantallaTablet &&
+                        <nav className='flex justify-end items-center font-work text-white'>
+                            <Link to="/" className='mx-3 hover:-translate-y-2 duration-500 transition-all'>INICIO</Link>
+                            <Link to="/habitaciones" className='mx-3 hover:-translate-y-2 duration-500 transition-all'>HABITACIONES</Link>
+                            <Link to="/servicios" className='mx-3 hover:-translate-y-2 duration-500 transition-all'>SERVICIOS</Link>
+                            <Link to="/pisco" className='mx-3 hover:-translate-y-2 duration-500 transition-all'>TURISMO</Link>
+                            <Link to="/contacto" className='mx-3 hover:-translate-y-2 duration-500 transition-all'>CONTACTO</Link>
+                        </nav>
                     }
 
 
+                </div> 
+
+
+                <div className={`absolute w-full h-screen top-0 left-0 z-50 p-4 font-work text-white bg-[#181818] ${!isMenuOpen && 'hidden'} overflow-y-scroll`}>
+                    <div className='flex justify-end items-center'>
+                        <img onClick={closeMenu} className='w-8' src={imgClose} alt="closeIcon" />
+                    </div>
+
+              
+                    <nav className='flex flex-col justify-center items-center text-xl mt-[40%]'>
+                            <img className='w-[250px] mb-10' src={logoName} alt="Logo Be'Tania" />
+                            <Link to="/" onClick={closeMenu} className='my-3'>INICIO</Link>
+                            <Link to="/habitaciones" onClick={closeMenu} className='my-3'>HABITACIONES</Link>
+                            <Link to="/servicios" onClick={closeMenu} className='my-3'>SERVICIOS</Link>
+                            <Link to="/pisco" onClick={closeMenu} className='my-3'>ATRACCIONES EN PISCO</Link>
+                            <Link to="/contacto" className='mx-3 hover:-translate-y-2 duration-500 transition-all'>CONTACTO</Link>
+                    </nav>
+                
                 </div>
 
-                <nav className={`w-screen h-screen absolute top-0 left-0 z-50 font-work text-white bg-[#181818] ${!isMenuOpen && 'hidden'}`}>
-                    <div className='flex flex-col w-full h-full mx-auto max-w-screen-desktop pl-5 tablet:pl-5 desktop:pl-0'>
-
-                        <div className='flex justify-between items-center py-6'>
-                            <button onClick={closeMenu}><img className='w-9' src={imgClose} alt="closeIcon" /></button>
-                        </div>
-
-                        <div className='flex-1 flex flex-col justify-center items-start text-xl tablet:text-2xl desktop:text-4xl'>
-                            <span className='mb-10 text-center'><img className='w-16 desktop:w-28' src={logoWhite} alt="Logo Betania" /></span>
-                            <Link to="/" onClick={closeMenu} className='my-3 hover:text-[#89745C]'>INICIO</Link>
-                            <Link to="/habitaciones" onClick={closeMenu} className='my-3 hover:text-[#89745C]'>HABITACIONES</Link>
-                            <Link to="/servicios" onClick={closeMenu} className='my-3 hover:text-[#89745C]'>SERVICIOS</Link>
-                            <Link to="/pisco" onClick={closeMenu} className='my-3 hover:text-[#89745C]'>ATRACCIONES EN PISCO</Link>
-                            <Link to="/preguntas" onClick={closeMenu} className='my-3 hover:text-[#89745C]'>PREGUNTAS PRECUENTES</Link>
-                            <Link to="https://api.whatsapp.com/send?phone=51942916064&text=%C2%A1Hola!%20Quisiera%20informaci%C3%B3n%20%F0%9F%98%8A" target="_blank" className={`w-[134px] h-[38px] mt-5 flex justify-center items-center bg-[#181818] border-2  border-white text-white uppercase text-sm font-work rounded hover:bg-transparent hover:text-xl
-                                    tablet:h-[48px] tablet:w-[167px] 
-                                    desktop:w-[199px] desktop:h-[58px]`}
-                                >
-                                    Reserva
-                                </Link>
-                        </div>
-                    </div>
-                </nav>
             </div>
 
 

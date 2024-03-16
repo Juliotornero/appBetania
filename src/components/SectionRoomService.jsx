@@ -5,6 +5,9 @@ import roomSectionDesktop from '../assets/section-room-desktop.jpg'
 import { Link } from 'react-router-dom'
 
 const SectionRoomService = ({pantallaDesktop}) => {
+
+
+    
   return (
     
     <section className='w-full h-full mx-auto relative pt-16 tablet:mb-[650px] desktop:mb-[1000px]'>
