@@ -3,7 +3,7 @@ import SectionRoomService from './SectionRoomService'
 import Map from './Map';
 
 import logoBlack from '../assets/logoBlack.svg'
-import ArrowBounce from './arrowBounce';
+
 import { usePantalla } from './PantallaContext';
 
 const Main = () => {
